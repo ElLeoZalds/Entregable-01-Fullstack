@@ -33,7 +33,7 @@ exports.crearSubcategoria = async (req, res) => {
 };
 
 //LISTAR (READ)
-exports.obtenerSubcategoria = async (res, req) => {
+exports.obtenerSubcategoria = async (req, res) => {
   //Preparar la consulta para pedir las subcategorias en MySQL
   const sql = "SELECT id, nombre, categoria_id FROM subcategorias";
 
@@ -51,7 +51,7 @@ exports.obtenerSubcategoria = async (res, req) => {
 };
 
 //LISTAR POR ID (READ)
-exports.obtenerSubcategoriaPorId = async (res, req) => {
+exports.obtenerSubcategoriaPorId = async (req, res) => {
   //Obtiene el id por el URL
   //Params = http://localhost.com/api/subcategorias/1
   const { id } = req.params;

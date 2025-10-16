@@ -33,7 +33,7 @@ exports.crearDocente = async (req, res) => {
 };
 
 //LISTAR (READ)
-exports.obtenerDocente = async (res, req) => {
+exports.obtenerDocente = async (req, res) => {
   //Preparar la consulta para pedir los docentes en MySQL
   const sql = "SELECT id, nombre, email, telefono FROM docentes";
 
@@ -51,7 +51,7 @@ exports.obtenerDocente = async (res, req) => {
 };
 
 //LISTAR POR ID (READ)
-exports.obtenerDocentePorId = async (res, req) => {
+exports.obtenerDocentePorId = async (req, res) => {
   //Obtiene el id por el URL
   //Params = http://localhost.com/api/docentes/1
   const { id } = req.params;

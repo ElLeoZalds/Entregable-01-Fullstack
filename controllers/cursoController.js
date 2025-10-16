@@ -52,7 +52,7 @@ exports.crearCurso = async (req, res) => {
 };
 
 //LISTAR (READ)
-exports.obtenerCurso = async (res, req) => {
+exports.obtenerCurso = async (req, res) => {
   //Preparar la consulta para pedir las cursos en MySQL
   const sql =
     "SELECT id, titulo, descripcion, fecha_inicio, fecha_fin, duracion_horas, precio, subcategoria_id, docente_id FROM cursos";
@@ -71,7 +71,7 @@ exports.obtenerCurso = async (res, req) => {
 };
 
 //LISTAR POR ID (READ)
-exports.obtenerCursoPorId = async (res, req) => {
+exports.obtenerCursoPorId = async (req, res) => {
   //Obtiene el id por el URL
   //Params = http://localhost.com/api/curso/1
   const { id } = req.params;

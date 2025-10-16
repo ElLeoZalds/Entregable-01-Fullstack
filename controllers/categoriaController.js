@@ -33,7 +33,7 @@ exports.crearCategoria = async (req, res) => {
 };
 
 //LISTAR (READ)
-exports.obtenerCategoria = async (res, req) => {
+exports.obtenerCategoria = async (req, res) => {
   //Preparar la consulta para pedir las categorias en MySQL
   const sql = "SELECT id, nombre FROM categorias";
 
@@ -42,7 +42,7 @@ exports.obtenerCategoria = async (res, req) => {
     //Ejecutar la consulta y deserealizar los datos
     const [categorias] = await db.query(sql);
     //Enviar el resultado y mostrar las categorias
-    res.status(201).json(categorias);
+    res.status(200).json(categorias);
   } catch (e) {
     //Enviar un error si no se puede conectar
     console.error(e);
@@ -51,7 +51,7 @@ exports.obtenerCategoria = async (res, req) => {
 };
 
 //LISTAR POR ID (READ)
-exports.obtenerCategoriaPorId = async (res, req) => {
+exports.obtenerCategoriaPorId = async (req, res) => {
   //Obtiene el id por el URL
   //Params = http://localhost.com/api/categorias/1
   const { id } = req.params;
