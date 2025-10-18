@@ -35,19 +35,19 @@ app.get("/", (req, res) => {
 });
 
 //Rutas para las vistas HTML
-app.get("categoria", (req, res) => {
+app.get("/categoria", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "categoria.html"));
 });
 
-app.get("curso", (req, res) => {
+app.get("/curso", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "curso.html"));
 });
 
-app.get("docente", (req, res) => {
+app.get("/docente", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "docente.html"));
 });
 
-app.get("subcategoria", (req, res) => {
+app.get("/subcategoria", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "subcategoria.html"));
 });
 
