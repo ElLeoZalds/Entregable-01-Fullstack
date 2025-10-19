@@ -20,7 +20,8 @@
     <header></header>
     <main class="container my-3">
       <h1>CATEGORIAS</h1>
-      <form action="">
+      <form action="" method="post" id="form-categoria" autocomplete="off">
+        <input type="hidden" id="idcategoria" />
         <div class="card">
           <div class="card-header">
             <strong>Complete todos los campos</strong>
@@ -64,7 +65,26 @@
           </div>
         </div>
       </form>
+
+      <div class="table-responsive mt-3">
+        <table class="table table-bordered" id="tabla-categorias">
+          <colgroup>
+            <col style="width: 20%" />
+            <col style="width: 40%" />
+            <col style="width: 40%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="text-center">ID</th>
+              <th class="text-center">CATEGORIA</th>
+              <th class="text-center">ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </main>
     <footer></footer>
+    <script src="./js/app.categorias.js"></script>
   </body>
 </html>
