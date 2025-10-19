@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:3000/api/categorias";
 
-const formulario = document.getElementById("form-categoria");
-const tabla = document.querySelector("#tabla-categorias  tbody");
+const formulario_cate = document.getElementById("form-categoria");
+const tabla_cate = document.querySelector("#tabla-categorias tbody");
 
 const idcategoria = document.getElementById("idcategoria");
 const categoria = document.getElementById("categoria");
@@ -17,10 +17,10 @@ async function obtenerCategorias() {
   const response = await fetch(API_URL, { method: "get" });
   const categorias = await response.json();
 
-  tabla.innerHTML = "";
+  tabla_cate.innerHTML = "";
 
   categorias.forEach((cate) => {
-    const row = tabla.insertRow();
+    const row = tabla_cate.insertRow();
 
     row.insertCell().textContent = cate.id;
     row.insertCell().textContent = cate.nombre;
@@ -70,7 +70,7 @@ async function cargarParaEdicion(cate) {
   btnGuardarCate.innerText = "Actualizar";
 }
 
-formulario.addEventListener("submit", async (event) => {
+formulario_cate.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const data = {
@@ -99,7 +99,7 @@ formulario.addEventListener("submit", async (event) => {
     const result = await response.json();
     console.log(result);
     btnGuardarCate.innerText = "Guardar";
-    formulario.reset();
+    formulario_cate.reset();
     obtenerCategorias();
   } catch (e) {
     console.error(e);

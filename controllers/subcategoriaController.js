@@ -13,7 +13,7 @@ exports.crearSubcategoria = async (req, res) => {
   }
 
   //Preparar la consulta para insertar la categoria en MySQL
-  const sql = "INSERT INTO subcagorias (nombre, categoria_id) VALUES (?, ?)";
+  const sql = "INSERT INTO subcategorias (nombre, categoria_id) VALUES (?, ?)";
 
   //Try catch para ejecutar la consulta y manejar errores
   try {
@@ -65,7 +65,7 @@ exports.obtenerSubcategoriaPorId = async (req, res) => {
     const [subcategorias] = await db.query(sql, [id]);
 
     //if para validar si existe la categoria
-    if (subcategorias.lenght == 0) {
+    if (subcategorias.length == 0) {
       return res.status(404).json({ mensaje: "Subcategoria no encontrada" });
     }
     //Enviar el resultado y mostrar la categoria
@@ -108,6 +108,7 @@ exports.actualizarSubcategoria = async (req, res) => {
   }
 
   //Construir la consulta SQL dinámicamente
+  values.push(id);
   const sql = `UPDATE subcategorias SET ${sqlParts.join(",")} WHERE id = ?`;
 
   try {
@@ -140,8 +141,10 @@ exports.eliminarSubcategoria = async (req, res) => {
 
     //Validar si se encontró la subcategoría
     if (restult.affectedRows === 0) {
-      return res.status(404).json({ mensaje: "No se encontró la categoría" });
+      res.status(404).json({ mensaje: "No se encontró la categoría" });
     }
+
+    res.status(200).json({ mensaje: "Eliminado correctamente" });
   } catch (e) {
     //Enviar un error si no se puede conectar
     console.error(e);

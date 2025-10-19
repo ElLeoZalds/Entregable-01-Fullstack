@@ -86,7 +86,7 @@ exports.obtenerCursoPorId = async (req, res) => {
     const [cursos] = await db.query(sql, [id]);
 
     //if para validar si existe el curso
-    if (cursos.lenght == 0) {
+    if (cursos.length == 0) {
       return res.status(404).json({ mensaje: "Curso no encontrada" });
     }
     //Enviar el resultado y mostrar el curso
@@ -177,6 +177,7 @@ exports.actualizarCurso = async (req, res) => {
   }
 
   //Construir la consulta SQL dinámicamente
+  values.push(id);
   const sql = `UPDATE cursos SET ${sqlParts.join(",")} WHERE id = ?`;
 
   try {
@@ -209,8 +210,10 @@ exports.eliminarCurso = async (req, res) => {
 
     //Validar si se encontró el curso
     if (restult.affectedRows === 0) {
-      return res.status(404).json({ mensaje: "No se encontró el curso" });
+      res.status(404).json({ mensaje: "No se encontró el curso" });
     }
+    
+    res.status(200).json({ mensaje: "Eliminado correctamente" });
   } catch (e) {
     //Enviar un error si no se puede conectar
     console.error(e);

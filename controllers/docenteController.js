@@ -65,7 +65,7 @@ exports.obtenerDocentePorId = async (req, res) => {
     const [docentes] = await db.query(sql, [id]);
 
     //if para validar si existe la docente
-    if (docentes.lenght == 0) {
+    if (docentes.length == 0) {
       return res.status(404).json({ mensaje: "Docente no encontrada" });
     }
     //Enviar el resultado y mostrar la docente
@@ -113,6 +113,7 @@ exports.actualizarDocente = async (req, res) => {
   }
 
   //Construir la consulta SQL dinámicamente
+  values.push(id);
   const sql = `UPDATE docentes SET ${sqlParts.join(",")} WHERE id = ?`;
 
   try {
@@ -145,8 +146,10 @@ exports.eliminarDocente = async (req, res) => {
 
     //Validar si se encontró la subcategoría
     if (restult.affectedRows === 0) {
-      return res.status(404).json({ mensaje: "No se encontró la categoría" });
+      res.status(404).json({ mensaje: "No se encontró la categoría" });
     }
+
+    res.status(200).json({ mensaje: "Eliminado correctamente" });
   } catch (e) {
     //Enviar un error si no se puede conectar
     console.error(e);

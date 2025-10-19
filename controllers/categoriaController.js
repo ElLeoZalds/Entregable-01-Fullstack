@@ -65,11 +65,11 @@ exports.obtenerCategoriaPorId = async (req, res) => {
     const [categorias] = await db.query(sql, [id]);
 
     //if para validar si existe la categoria
-    if (categorias.lenght == 0) {
+    if (categorias.length === 0) {
       return res.status(404).json({ mensaje: "Categoria no encontrada" });
     }
     //Enviar el resultado y mostrar la categoria
-    res.status(201).json(categorias[0]);
+    res.status(200).json(categorias[0]);
   } catch (e) {
     //Enviar un error si no se puede conectar
     console.error(e);
@@ -103,6 +103,7 @@ exports.actualizarCategoria = async (req, res) => {
   }
 
   //Construir la consulta SQL dinámicamente
+  values.push(id);
   const sql = `UPDATE categorias SET ${sqlParts.join(",")} WHERE id = ?`;
 
   try {
@@ -131,12 +132,14 @@ exports.eliminarCategoria = async (req, res) => {
 
   try {
     //Ejecutar la consulta
-    const [restult] = await db.query(sql, [id]);
+    const [result] = await db.query(sql, [id]);
 
     //Validar si se encontró la subcategoría
-    if (restult.affectedRows === 0) {
-      return res.status(404).json({ mensaje: "No se encontró la categoría" });
+    if (result.affectedRows === 0) {
+      res.status(404).json({ mensaje: "No se encontró la categoría" });
     }
+
+    res.status(200).json({ mensaje: "Eliminado correctamente" });
   } catch (e) {
     //Enviar un error si no se puede conectar
     console.error(e);
