@@ -21,8 +21,8 @@
 
     <main class="container my-3">
       <h1>CURSOS</h1>
-
-      <form action="">
+      <form action="" method="post" id="form-curso" autocomplete="off">
+        <input type="h" id="idcurso" />
         <div class="card">
           <div class="card-header">
             <strong>Complete los campos</strong>
@@ -90,6 +90,20 @@
                   <input
                     type="text"
                     class="form-control rounded-0"
+                    id="duracion_horas"
+                    name="duracion_horas"
+                    pattern="[0-9]+"
+                    required
+                  />
+                  <label for="duracion_horas">Duración (Horas)</label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control rounded-0"
                     id="precio"
                     name="precio"
                     pattern="[0-9.]+"
@@ -98,49 +112,87 @@
                   <label for="precio">Precio</label>
                 </div>
               </div>
+              <div class="col-6 mb-6">
+                <div class="form-floating">
+                  <select
+                    type="text"
+                    class="form-select rounded-0"
+                    id="lista-idsubcate"
+                    name="lista-idsubcate"
+                    requerid
+                  >
+                    <option value="">Seleccione una subcategoría</option>
+                  </select>
+                  <label for="lista-idsubcate">Id de Subcategoría</label>
+                </div>
+              </div>
 
-              <!--
-              <div class="col-md-6">
+              <div class="col-6 mb-6">
                 <div class="form-floating">
-                  <input
+                  <select
                     type="text"
-                    class="form-control rounded-0"
-                    id="subcategoria_id"
-                    name="subcategoria_id"
+                    class="form-select rounded-0"
+                    id="lista-iddocente"
+                    name="lista-iddocente"
                     requerid
-                  />
-                  <label for="subcategoria_id">Id de Subcategoría</label>
+                  >
+                    <option value="">Seleccione un docente</option>
+                  </select>
+                  <label for="lista-iddocente">Id del Docente</label>
                 </div>
               </div>
-              -->
-              <!--
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control rounded-0"
-                    id="docente_id"
-                    name="docente_id"
-                    requerid
-                  />
-                  <label for="docente_id">Id del Docente</label>
-                </div>
-              </div>
-              -->
             </div>
           </div>
           <div class="card-footer text-end">
-            <button type="reset" class="btn btn-outline-danger rounded-0">
+            <button
+              type="reset"
+              class="btn btn-outline-danger rounded-0"
+              id="btnCancelCurso"
+            >
               Cancelar
             </button>
-            <button type="submit" class="btn btn-outline-primary rounded-0">
+            <button
+              type="submit"
+              class="btn btn-outline-primary rounded-0"
+              id="btnGuardarCurso"
+            >
               Guardar
             </button>
           </div>
         </div>
       </form>
-    </main>
 
+      <div class="table-responsive mt-3">
+        <table class="table table-bordered" id="tabla-cursos">
+          <colgroup>
+            <col style="width: 10%" />
+            <col style="width: 10%" />
+            <col style="width: 10%" />
+            <col style="width: 10%" />
+            <col style="width: 10%" />
+            <col style="width: 10%" />
+            <col style="width: 10%" />
+            <col style="width: 10%" />
+            <col style="width: 10%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="text-center">ID</th>
+              <th class="text-center">TÍTULO</th>
+              <th class="text-center">DESCRIPCIÓN</th>
+              <th class="text-center">FECHA DE INICIO</th>
+              <th class="text-center">FECHA DE FINALIZACIÓN</th>
+              <th class="text-center">DURACIÓN</th>
+              <th class="text-center">PRECIO</th>
+              <th class="text-center">SUBCATEGORÍA ID</th>
+              <th class="text-center">DOCENTE ID</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
     <footer></footer>
+    <script src="./js/app.cursos.js"></script>
   </body>
 </html>

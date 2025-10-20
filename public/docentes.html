@@ -18,11 +18,10 @@
   </head>
   <body>
     <header></header>
-
     <main class="container my-3">
       <h1>DOCENTES</h1>
-
-      <form action="">
+      <form action="" method="post" id="form-docente" autocomplete="off">
+        <input type="" id="iddocente" />
         <div class="card">
           <div class="card-header">
             <strong>Complete todos los campos</strong>
@@ -75,17 +74,40 @@
             </div>
           </div>
           <div class="card-footer text-end">
-            <button type="reset" class="btn btn-outline-danger rounded-0">
+            <button type="reset" class="btn btn-outline-danger rounded-0" id="btnCancelDocen">
               Cancelar
             </button>
-            <button type="submit" class="btn btn-outline-primary rounded-0">
+            <button type="submit" class="btn btn-outline-primary rounded-0" id="btnGuardarDocen">
               Guardar
             </button>
           </div>
         </div>
       </form>
+
+      <div class="table-responsive mt-3">
+        <table class="table table-bordered" id="tabla-docentes">
+          <colgroup>
+            <col style="width: 10%" />
+            <col style="width: 40%" />
+            <col style="width: 30%" />
+            <col style="width: 20%" />
+            <col style="width: 20%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="text-center">ID</th>
+              <th class="text-center">NOMBRE</th>
+              <th class="text-center">EMAIL</th>
+              <th class="text-center">TELÉFONO</th>
+              <th class="text-center">ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </main>
 
     <footer></footer>
+    <script src="./js/app.docentes.js"></script>
   </body>
 </html>

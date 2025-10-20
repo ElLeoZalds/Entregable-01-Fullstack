@@ -8,8 +8,8 @@ exports.crearSubcategoria = async (req, res) => {
   const { nombre, categoria_id } = req.body;
 
   //Validar los campos
-  if ((!nombre, !categoria_id)) {
-    return res.status(400).json({ mensaje: "Falta completar los campo" });
+  if (!nombre || !categoria_id) {
+    return res.status(400).json({ mensaje: "Falta completar los campos" });
   }
 
   //Preparar la consulta para insertar la categoria en MySQL
@@ -84,7 +84,7 @@ exports.actualizarSubcategoria = async (req, res) => {
   //Recibir los datos
   const { nombre, categoria_id } = req.body;
   //Validar los campos
-  if ((!nombre, !categoria_id)) {
+  if (!nombre && !categoria_id) {
     return res.status(401).json({ mensaje: "Falta completar el campo" });
   }
 

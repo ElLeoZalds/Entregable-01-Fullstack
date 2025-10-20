@@ -104,7 +104,7 @@ exports.actualizarCategoria = async (req, res) => {
 
   //Construir la consulta SQL dinámicamente
   values.push(id);
-  const sql = `UPDATE categorias SET ${sqlParts.join(",")} WHERE id = ?`;
+  const sql = `UPDATE categorias SET ${sqlParts.join(", ")} WHERE id = ?`;
 
   try {
     //Ejecutar la consulta

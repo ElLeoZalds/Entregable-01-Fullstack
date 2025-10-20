@@ -27,7 +27,7 @@ exports.crearCurso = async (req, res) => {
     !subcategoria_id ||
     !docente_id
   ) {
-    return res.status(400).json({ mensaje: "Falta completar el campo" });
+    return res.status(400).json({ mensaje: "Falta completar los campos" });
   }
 
   //Preparar la consulta para insertar el curso en MySQL
@@ -37,7 +37,16 @@ exports.crearCurso = async (req, res) => {
   //Try catch para ejecutar la consulta y manejar errores
   try {
     //Ejecutar la consulta
-    const [result] = await db.query(sql, [nombre]);
+    const [result] = await db.query(sql, [
+      titulo,
+      descripcion,
+      fecha_inicio,
+      fecha_fin,
+      duracion_horas,
+      precio,
+      subcategoria_id,
+      docente_id,
+    ]);
 
     //Enviar la respuesta al enviar la consulta
     res.status(201).json({
@@ -73,7 +82,7 @@ exports.obtenerCurso = async (req, res) => {
 //LISTAR POR ID (READ)
 exports.obtenerCursoPorId = async (req, res) => {
   //Obtiene el id por el URL
-  //Params = http://localhost.com/api/curso/1
+  //Params = http://localhost.com/api/cursos/1
   const { id } = req.params;
 
   //Prepara la consulta para pedir las cursos por su id en MySQL
@@ -202,7 +211,7 @@ exports.eliminarCurso = async (req, res) => {
   //Obtiene el id por el URL
   const { id } = req.params;
   //Preparar la consulta para eliminar el curso en MySQL
-  const sql = "DELETE FROM curso WHERE id = ?";
+  const sql = "DELETE FROM cursos WHERE id = ?";
 
   try {
     //Ejecutar la consulta
@@ -212,7 +221,7 @@ exports.eliminarCurso = async (req, res) => {
     if (restult.affectedRows === 0) {
       res.status(404).json({ mensaje: "No se encontró el curso" });
     }
-    
+
     res.status(200).json({ mensaje: "Eliminado correctamente" });
   } catch (e) {
     //Enviar un error si no se puede conectar

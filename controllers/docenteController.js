@@ -9,7 +9,7 @@ exports.crearDocente = async (req, res) => {
 
   //Validar el campo
   if (!nombre || !email || !telefono) {
-    return res.status(400).json({ mensaje: "Falta completar los campo" });
+    return res.status(400).json({ mensaje: "Falta completar los campos" });
   }
 
   //Preparar la consulta para insertar la categoria en MySQL

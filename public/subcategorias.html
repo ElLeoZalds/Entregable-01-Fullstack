@@ -23,7 +23,7 @@
       <h1>SUBCATEGORÍAS</h1>
 
       <form action="" method="post" id="form-subcategoria" autocomplete="off">
-        <input type="" id="idsubcategoria" />
+        <input type="hidden" id="idsubcategoria" />
         <div class="card">
           <div class="card-header">
             <strong>Complete todos los campos</strong>
@@ -46,9 +46,15 @@
               </div>
               <div class="col-6 mb-6">
                 <div class="form-floating">
-                  <select id="lista-idcate" name="lista-idcate" required>
-                    <option value="">Seleccione el Id</option>
+                  <select
+                    class="form-select rounded-0"
+                    id="lista-idcate"
+                    name="lista-idcate"
+                    required
+                  >
+                    <option value="">Seleccione una categoría</option>
                   </select>
+                  <label for="lista-idcate">Categoría</label>
                 </div>
               </div>
             </div>
@@ -77,45 +83,23 @@
         <table class="table table-bordered" id="tabla-subcategorias">
           <colgroup>
             <col style="width: 10%" />
-            <col style="width: 10%" />
-            <col style="width: 10%" />
-            <col style="width: 10%" />
+            <col style="width: 35%" />
+            <col style="width: 35%" />
+            <col style="width: 15%" />
           </colgroup>
           <thead>
-            <th>ID</th>
-            <th>SUBCATEGORIA</th>
-            <th>CATEGORIA</th>
-            <th>ACCIONES</th>
+            <tr>
+              <th class="text-center">ID</th>
+              <th class="text-center">SUBCATEGORIA</th>
+              <th class="text-center">CATEGORIA ID</th>
+              <th class="text-center">ACCIONES</th>
+            </tr>
           </thead>
           <tbody></tbody>
         </table>
       </div>
     </main>
     <footer></footer>
-    <script>
-      const URL_API_CATEGORIAS = "http://localhost:3000/api/categorias";
-      const listaIdCate = document.getElementById("lista-idcate");
-      const formulario = document.getElementById("form-subcategoria");
-
-      async function obtenerCategorias() {
-        const response = await fetch(URL_API_CATEGORIAS, { method: "get" });
-        const categorias = await response.json();
-
-        categorias.forEach((item) => {
-          const tagOption = document.createElement("option");
-          tagOption.innerHTML = item.categoria;
-          tagOption.value = item.idcategoria;
-          listaIdCate.appendChild(tagOption);
-        });
-      }
-
-      formulario.addEventListener("submit", (event) => {
-        event.preventDefault;
-
-        alert(listaIdCate.value);
-      });
-
-      document.addEventListener("DOMContentLoaded", obtenerCategorias);
-    </script>
+    <script src="./js/app.subcategorias.js"></script>
   </body>
 </html>
