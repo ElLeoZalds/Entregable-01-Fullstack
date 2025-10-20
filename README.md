@@ -65,7 +65,7 @@ npm install
 DB_HOST = localhost;
 DB_USER = tu_usuario;
 DB_PASSWORD = tu_contraseña;
-DB_NAME = cursosDB;
+DB_NAME = tu_db;
 PORT = 3306;
 ```
 
